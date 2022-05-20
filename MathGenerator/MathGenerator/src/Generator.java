@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+// Generates problems for use in the program
 public class Generator {
 
     public static final int ABADDITION = -50000;
