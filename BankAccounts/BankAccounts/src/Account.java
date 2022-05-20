@@ -13,6 +13,8 @@ public class Account implements Comparable<Account> {
 
     private String _actNum;
     public String getActNum() { return _actNum; }
+    
+    // Generates an unused account number
     private String generate() {
         boolean _continue = true;
         while(true) {
@@ -36,6 +38,7 @@ public class Account implements Comparable<Account> {
     public static boolean getAllowedFugitive() { return CONVICTEDFUGITIVEALLOWED; }
     public static boolean getDeletedOriginal() { return DELETEDORIGINALACCOUNT; }
 
+    // Adds money to an account
     public void deposit() {
         boolean _cont = true;
         if(!this._isFrozen) {
@@ -63,6 +66,8 @@ public class Account implements Comparable<Account> {
         }
         else JOptionPane.showMessageDialog(null, "The account is frozen, so its balance cannot be modified.");
     }
+    
+    // Removes money from account
     public void withdraw() {
         boolean _cont = true;
         if (!this._isFrozen) {
@@ -93,6 +98,7 @@ public class Account implements Comparable<Account> {
             }
         }
     }
+    
     private boolean _isFrozen;
     public boolean isFrozen() { return _isFrozen; }
     public void freeze() { _isFrozen = true; }
@@ -106,6 +112,7 @@ public class Account implements Comparable<Account> {
 
     private static ArrayList<Account> registry = new ArrayList<Account>();
 
+    // Creates a bank account with random values apart from the name and adds it to the registry
     public Account(String name) {
         _name = name;
         _actNum = generate();
@@ -115,7 +122,8 @@ public class Account implements Comparable<Account> {
         _isMarkedForDeletion = false;
         registry.add(this);
     }
-
+       
+    // Creates an original bank account with given values and adds it to the registry
     public Account(String name, String actNum, double bal, String creationDate, boolean original) {
         _name = name;
         _actNum = actNum;
@@ -126,6 +134,8 @@ public class Account implements Comparable<Account> {
         _originalAccount = original;
         registry.add(this);
     }
+    
+    // Creates a bank account with given name, account number, and balance
     public Account(String name, String actNum, double bal) {
         _name = name;
         _actNum = actNum;
@@ -135,6 +145,8 @@ public class Account implements Comparable<Account> {
         _isMarkedForDeletion = false;
         registry.add(this);
     }
+    
+    // Creates a bank account with given name and balance
     public Account(String name, double bal) {
         _name = name;
         int tempNum = 0;
@@ -146,6 +158,7 @@ public class Account implements Comparable<Account> {
         registry.add(this);
     }
 
+    // Creates a new bank account with given values
     public Account(String name, String actNum, double bal, boolean isFrozen, String creationDate) {
         _name = name;
         _actNum = actNum;
@@ -156,6 +169,7 @@ public class Account implements Comparable<Account> {
         registry.add(this);
     }
 
+    // Main screen/summary display method using JOptionPane
     public static void displaySummary() {
         String displayVal = "";
         displayVal += "Welcome to Riquense Central Bank!\n";
@@ -167,12 +181,14 @@ public class Account implements Comparable<Account> {
         }
     }
 
+    // Creates a new account with JOptionPane
     public static Account addAccount() {
         Account acc = new Account(JOptionPane.showInputDialog("What will be the name registered to the account?\nPlease do not let Rodrigo, the convicted fugitive, register an account here."));
         if(acc.getName().equalsIgnoreCase("Rodrigo")) CONVICTEDFUGITIVEALLOWED = true;
         return acc;
     }
 
+    // Shows an introduction message
     public static String introMessage() {
         String retVal = "";
         retVal += "Greetings, stranger!\nThis is the internal mainframe of Riquense Central Bank.\n\n" +
@@ -181,37 +197,43 @@ public class Account implements Comparable<Account> {
         return retVal;
     }
 
+    // Shows a screen to perform actions
     public static String mainMessage() {
         String retVal = "What do you want to do?";
         return retVal;
     }
 
-
+    // Deletes an account
     public void delAccount() {
         if(this._originalAccount) DELETEDORIGINALACCOUNT = true;
         _isMarkedForDeletion = true;
         registry.remove(this);
     }
 
+    // Deletes accounts with a certain name
     public static void delNameAccounts(ArrayList<Account> search) {
         for(Account a : search) {
             if(registry.contains(a)) { unregister(a); a.delAccount(); }
         }
     }
 
+    // Deletes accounts with a certain account number
     public static void delNumAccounts(String search) {
 
     }
 
+    // Returns the full registry of bank accounts
     public static ArrayList<Account> getRegistry() {
         if(registry == null) registry = new ArrayList<Account>();
         return registry;
     }
 
+    // Removes an account from the registry
     public static void unregister(Account a) {
         registry.remove(a);
     }
 
+    // Returns a list of accounts with a certain string in alphabetical order
     public static ArrayList<Account> searchByName(String search) {
         ArrayList<Account> retList = new ArrayList<>();
         for(Account a : registry) {
@@ -224,6 +246,7 @@ public class Account implements Comparable<Account> {
         return retList;
     }
 
+    // Returns a list of accounts with a certain account number substring in order
     public static ArrayList<Account> searchByNumber(String search) {
         ArrayList<Account> retList = new ArrayList<>();
         for(Account a : registry) {
@@ -233,6 +256,7 @@ public class Account implements Comparable<Account> {
         return retList;
     }
 
+    // Returns a list.toString() of searched accounts by name
     public static String stringSearchByName(String search) {
         String retVal = "";
         for(Account a : searchByName(search)) {
@@ -241,6 +265,7 @@ public class Account implements Comparable<Account> {
         return retVal;
     }
 
+    // Returns a list.toString() of searched accounts by number
     public static String stringSearchByNumber(String search) {
         String retVal = "";
         for(Account a : searchByNumber(search)) {
@@ -249,6 +274,7 @@ public class Account implements Comparable<Account> {
         return retVal;
     }
 
+    // Account finder looking by account number
     public static Account findAccount(String actNum) {
         ArrayList<Account> list = new ArrayList<>();
         for(Account a : registry) {
@@ -262,7 +288,8 @@ public class Account implements Comparable<Account> {
         }
         return null;
     }
-
+    
+    // Prints registry to console
     public static void printList() {
         for(Account a : registry) {
             System.out.println(a);
@@ -270,6 +297,7 @@ public class Account implements Comparable<Account> {
         System.out.println();
     }
 
+    // Returns registry.toString()
     public static String getList() {
         String retVal = "";
         for(Account a : registry) {
@@ -278,6 +306,7 @@ public class Account implements Comparable<Account> {
         return retVal;
     }
 
+    // Prints total balance in the bank
     public static void printTotal() {
         double total = 0;
         for(Account a : registry) {
@@ -296,42 +325,21 @@ public class Account implements Comparable<Account> {
         System.out.println(retVal);
     }
 
+    // Returns total balance in the bank
     public static String getTotalBal() {
         double total = 0;
         for (Account a : registry) {
             total += a.getBal();
         }
         return defaultFormat.format(total);
-        /*
-        double totalRounded = ((int)((total * 100) + 0.5)) / 100.0;
-        String sTotal = String.valueOf(totalRounded);
-        int index = sTotal.indexOf(".");
-        String subTotal = sTotal.substring(0, index);
-        String subTotal2 = sTotal.substring(index);
-        String retVal = "$";
-        for (int i = 0; i < index; i++) {
-            if ((subTotal.length() - i) % 3 == 0 && i != 0) retVal += ",";
-            retVal += subTotal.charAt(i);
-        }
-        retVal += subTotal2;
-        return retVal; */
     }
 
+    // Returns balance of account in $money form
     public String getStringBal() {
-        /* String bal = String.valueOf(_bal);
-        int index = bal.indexOf(".");
-        String subBal = bal.substring(0, index);
-        String subBal2 = bal.substring(index);
-        String retVal = "$";
-        for(int i = 0; i < index; i++) {
-            if((subBal.length() - i) % 3 == 0 && i != 0) retVal += ",";
-            retVal += subBal.charAt(i);
-        }
-        retVal += subBal2;
-        return retVal; */
         return defaultFormat.format(_bal);
     }
 
+    // Converts Account to String-able form
     public String toString() {
         if(_name.endsWith("s") && !_isFrozen)
             return _name + "' account at Riquense Central Bank has a balance of " +
@@ -355,6 +363,7 @@ public class Account implements Comparable<Account> {
         return _name.compareTo(other._name);
     }
 
+    // Creates a new comparator by name
     public static Comparator<Account> nameComparator = new Comparator<Account>() {
         @Override
         public int compare(Account o1, Account o2) {
@@ -362,6 +371,7 @@ public class Account implements Comparable<Account> {
         }
     };
 
+    // Creates a new comparator by number
     public static Comparator<Account> actNumComparator = new Comparator<Account>() {
         @Override
         public int compare(Account o1, Account o2) {
