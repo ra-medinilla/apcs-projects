@@ -50,19 +50,20 @@ public class Generator {
     private int problems;
     private int wrongProblems;
 
+    // Runs the program
     public Generator() {
         customizeScreen();
-        // generate(allProblems).guess(Msg.in("guess something"));
     }
 
+    // Returns a random problem
     public Problem generate(ArrayList<Integer> list) {
         int i = (int)(Math.random()*list.size());
         Problem p = new Problem(list.get(i));
-        // Problem p = new Problem(arr[(int)(Math.random()*arr.length)]);
         if(Problem.hasNotBeenAnswered(p)) return p;
         else return generate(list);
     }
 
+    // Sets up the basic screen
     private void customizeScreen() {
 
         panel = new JPanel(null);
@@ -293,7 +294,8 @@ public class Generator {
         frame.setVisible(true);
 
     }
-
+    
+    // Runs the program
     private void run(ArrayList<Integer> problemList, int numProblems) {
         problems = 0;
         wrongProblems = 0;
