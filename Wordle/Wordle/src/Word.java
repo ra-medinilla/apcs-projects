@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Word stores attributes of a word and allows for guesses to check if the word is guessed
 public class Word {
 
     private final String word;
