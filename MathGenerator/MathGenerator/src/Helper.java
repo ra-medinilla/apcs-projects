@@ -5,6 +5,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
+// Helper methods for use with JFrames
 public class Helper {
 
     public static void addPlaceholder(JTextField field, String text) {
