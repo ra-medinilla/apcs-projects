@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 
+// Runs the program through the constructor with a bunch of switch cases
 public class Overseer {
 
     private final Lightboard board = new Lightboard();
