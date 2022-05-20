@@ -1,3 +1,4 @@
+// Options for the main menu
 public enum Options {
 
     BACK,
