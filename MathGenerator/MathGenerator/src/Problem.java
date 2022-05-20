@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// Stores different kinds of problems and generates them using a registry
 public class Problem {
 
     public static final int ADDITION = -4074;
