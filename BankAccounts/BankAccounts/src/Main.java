@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Main {
 
+    // Pre-generates 10 accounts and runs the program
     public static void main(String[] args) {
         Account gary = new Account("Gary", "101", 31.03, "Mon Aug 23 07:50:00 EST 2021", true);
         Account nussy = new Account("Nussy", "102", 32.25, "Mon Aug 23 08:40:00 EST 2021", true);
