@@ -41,6 +41,7 @@ public class Problem {
     private int factor4; public int getFactor4() { return factor4; }
     private int tries;
 
+    // Creates a problem using a certain number to generate a type
     public Problem(int type) {
         if(correctRegistry == null) correctRegistry = new ArrayList<>();
         boolean cont = true;
@@ -423,58 +424,8 @@ public class Problem {
         }
         if(searchForProblem(this) != null) expression = "Review:\n" + expression;
     }
-
-//    public boolean guess(String guess) {
-//        tries++;
-//        if(type != DERIVATIVE && type != INTEGRAL) {
-//            boolean isCorrect = guess.equals(answer);
-//            if(isCorrect) {
-//                String victoryMsg = "";
-//                victoryMsg += "Correct!\nYou got it right in " + tries;
-//                if(tries > 1) victoryMsg += " tries."; else victoryMsg += " try. Nice job!";
-//                victoryMsg += "\nYou have answered " + percentCorrect() + " of questions correctly.";
-//                Msg.msg(victoryMsg);
-//                if(I_AM_DEBUGGING) System.out.println("correct!");
-//                if(!incorrectRegistry.contains(this) || (incorrectRegistry.contains(this) && tries == 1)) { correctRegistry.add(this);
-//                    if(searchForProblem(this) != null) incorrectRegistry.remove(searchForProblem(this)); } return true;
-//            }
-//            else {
-//                String incorrectMsg = "";
-//                incorrectMsg += "Incorrect!\nYou have attempted this question " + tries;
-//                if(tries > 1) incorrectMsg += " times so far."; else incorrectMsg += " time so far.";
-//                Msg.msg(incorrectMsg);
-//                if(I_AM_DEBUGGING) System.out.println("wrong!");
-//                if(!incorrectRegistry.contains(this)) incorrectRegistry.add(this);
-//                incorrectList.add(guess); wrongProblems++; return false;
-//            }
-//        }
-//        else {
-//            String victoryMsg = "";
-//            victoryMsg += "Correct!\nYou got it right in " + tries;
-//            if(tries > 1) victoryMsg += " tries."; else victoryMsg += " try. Nice job!";
-//            String incorrectMsg = "";
-//            incorrectMsg += "Incorrect!\nYou have attempted this question " + tries;
-//            if(tries > 1) incorrectMsg += " times so far."; else incorrectMsg += " time so far.";
-//            if(guess.equals(answer)) { Msg.msg(victoryMsg); return true; }
-//            else if(guess.equals(answer + "x^0") && !answer.contains("x")) {
-//                Msg.msg(victoryMsg + "\nRemember that x^0 is equivalent to 1." + "\nYou have answered " + percentCorrect() + " of questions correctly.");
-//                if(I_AM_DEBUGGING) { System.out.println("right, constant"); }
-//                if(!incorrectRegistry.contains(this) || (incorrectRegistry.contains(this) && tries == 1)) { correctRegistry.add(this);
-//                    if(searchForProblem(this) != null) incorrectRegistry.remove(searchForProblem(this)); } return true; }
-//            else if(!answer.contains("^") && guess.equals(answer + "^1")) {
-//                Msg.msg(victoryMsg + "\nRemember that x^1 can be written as just x." + "\nYou have answered " + percentCorrect() + " of questions correctly.");
-//                if(I_AM_DEBUGGING) { System.out.println("right, degree 1"); }
-//                if(!incorrectRegistry.contains(this) || (incorrectRegistry.contains(this) && tries == 1)) { correctRegistry.add(this);
-//                    if(searchForProblem(this) != null) incorrectRegistry.remove(searchForProblem(this)); } return true; }
-//            else {
-//                Msg.msg(incorrectMsg);
-//                if(I_AM_DEBUGGING) System.out.println("wrong");
-//                if(!incorrectRegistry.contains(this)) incorrectRegistry.add(this);
-//                incorrectList.add(guess); wrongProblems++;
-//                return false; }
-//        }
-//    }
-
+    
+    // Checks a guess against a problem
     public boolean guess(String guess) {
             if(guess == null) return false;
             String trimmedGuess = Helper.removeSpaces(guess);
@@ -497,22 +448,24 @@ public class Problem {
             }
     }
 
-
+    // Returns a problem as a string
     public String toString() {
         return expression + "Answer: " + answer;
     }
 
+    // Checks what problems have not been written
     public static boolean hasNotBeenAnswered(Problem p1) {
         for(Problem p2 : correctRegistry) if(p1.equals(p2)) return false;
         return true;
     }
 
+    // Searches for a certain problem in the registry
     public static Problem searchForProblem(Problem p) {
         for(Problem p2 : correctRegistry) if(p.equals(p2)) return p2;
         return null;
     }
 
-
+    // Overrides the equals method of an object for problems
     @Override
     public boolean equals(Object o) {
         if(o == this) return true;
