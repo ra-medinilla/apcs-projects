@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Arrays;
 
+// Board object that has a bunch of lights (signified by booleans) and can modify them at well using JOptionPanes
 public class Lightboard {
 
     private boolean[][] board;
