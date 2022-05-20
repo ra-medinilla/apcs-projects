@@ -26,6 +26,7 @@ public class Overseer {
     private ArrayList<String> unattemptedLetters;
     
 
+    // Switch cases to control the program
     public Overseer() {
         Word.setWordList();
         Msg.msg("Welcome to a horrible fork of Wordle that I spent way too much time working on just to scrap most of the features!");
@@ -236,6 +237,7 @@ public class Overseer {
         }
     }
 
+    // Checks if user won
     private boolean checkVictory(String state) {
         return !(state.contains("+") || state.contains("*"));
     }
