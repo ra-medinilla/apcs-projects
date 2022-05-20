@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// Basic message class (you created it)
 public class Msg {
 	
 	// Print to console without skipping a line.
