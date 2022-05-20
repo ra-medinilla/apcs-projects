@@ -4,7 +4,7 @@ import java.util.Collections;
 import javax.swing.JOptionPane;
 import java.text.NumberFormat;
 
-
+// Account stores all the information for a certain bank account and allows modifications
 public class Account implements Comparable<Account> {
 
     // Instance Variables, Getters, and Setters
