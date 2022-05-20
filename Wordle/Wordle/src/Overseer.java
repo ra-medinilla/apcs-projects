@@ -1,6 +1,7 @@
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
+// Runs the program through a bunch of switch cases using JOptionPane
 public class Overseer {
 
     private Word word;
