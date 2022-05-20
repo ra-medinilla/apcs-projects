@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Overseer {
 
+    // Not gonna break it down part by part, this is just a long list of JOptionPanes that circles around easily to navigate the bank menu
     public Overseer() {
         JOptionPane.showMessageDialog(null,
                 Account.introMessage(),
@@ -138,13 +139,14 @@ public class Overseer {
         }
     }
 
-
+    // Determines whether to search by name or number
     public static String searchMessage() {
         String retVal = "";
         retVal += "Do you want to search by the name listed on the account\nor by the account number?";
         return retVal;
     }
-
+    
+    // Useless
     public static String casinoQuestion1() {
         return "Do you want to gamble away all your money?";
     }
