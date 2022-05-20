@@ -20,14 +20,17 @@ public class Msg {
 		JOptionPane.showMessageDialog(null, o, "", JOptionPane.PLAIN_MESSAGE);
 	}
 
+	// Shows the message for once the word is guessed
 	public static void victoryMsg(Object o, int guessNum) { if(!(opt(new String[]{"Retry", "Quit"}, "Congratulations! You guessed the word correctly on guess #" + guessNum + "!\n(" +
 			o + ")\n\n" +
 			"Click \"Quit\" to end the game, or hit \"Retry\"\n" +
 			"to go for another round.", "") == 0)) System.exit(0); }
 
+	// Shows the message for when a guess is wrong
 	public static void incorrectMsg(Object guess, Object state, Object o) { msg("\"" + guess + "\" was incorrect. \nIts status is the following:\n" + state
 			+ "\n\n(" + o + ")");}
 
+	// Shows the message for when the user runs out of guesses
 	public static void defeatMsg(Word word) {
 		if(!(opt(new String[]{"Retry", "Quit"}, "Sorry, but you didn't guess the word correctly this time.\n" +
 				"(It was " + word.getWord() + ".)\n" +
@@ -35,7 +38,8 @@ public class Msg {
 				"Click \"Quit\" to end the game, or hit \"Retry\"\n" +
 				"to go for another round.", "") == 0)) System.exit(0);
 	}
-
+	
+	// Shows the message for the guess after the first
 	public static String nextStageMsg(int guessNum, List<String> guesses, List<String> states, ArrayList<String> usedLetters, ArrayList<String> unusedLetters, ArrayList<String> unattemptedLetters) {
 		StringBuilder msgVal = new StringBuilder();
 		msgVal.append("Please input a five-letter-long word to guess.\n(You are on guess #" + guessNum + ".)\n\n");
