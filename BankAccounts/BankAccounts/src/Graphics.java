@@ -1,4 +1,5 @@
 import javax.swing.ImageIcon;
+// Allows for use of pictures
 public enum Graphics {
 
     DELETEDORIGINALACCOUNT("src/images/deletedoriginal.png"), ESCAPEDFUGITIVEALLOWED("src/images/escapedfugitive.png"),
