@@ -2,7 +2,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// Your message class, but modified to suit purposes of Wordle by storing more message types
 public class Msg {
 	
 	// Print to console without skipping a line.
