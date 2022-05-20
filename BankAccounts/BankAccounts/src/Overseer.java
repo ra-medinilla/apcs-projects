@@ -3,6 +3,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.Objects;
 
+// Runs the program through the constructor with a bunch of JOptionPane chains
 public class Overseer {
 
     // Not gonna break it down part by part, this is just a long list of JOptionPanes that circles around easily to navigate the bank menu
