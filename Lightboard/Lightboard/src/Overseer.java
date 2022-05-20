@@ -9,6 +9,7 @@ public class Overseer {
     private final Lightboard board = new Lightboard();
     URL url = getClass().getClassLoader().getResource("stellarboardlogo.png");
 
+    // Bunch of switch cases that run the board
     public Overseer() {
         boolean _cont;
         ImageIcon mainLogo = new ImageIcon(Toolkit.getDefaultToolkit().getImage(url));
@@ -340,6 +341,7 @@ public class Overseer {
         }
     }
 
+    // Returns the map as a string
     public String drawMap() {
         StringBuilder retStr = new StringBuilder();
         String off = "\u2588";
